@@ -270,7 +270,8 @@ int main(void){
     // If path doesn't exist
     if(path.size==0){
         printf("There exists no path from %s to %s\n", nodes[src], nodes[dest]);
-        return 0;
+
+        goto cleanup;
     }
 
     // If path does exist
@@ -292,6 +293,10 @@ int main(void){
             printf("\n");
         }
     }
+
+cleanup:
+    free(path.items);
+    free(dijkstra_state_history);
 
     return 0;
 }
